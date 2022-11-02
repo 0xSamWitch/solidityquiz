@@ -14,8 +14,8 @@ def generate_preview_key():
 class Question(models.Model):
     RESULT_CHOICES = (
         ('OK', 'The expected result is:'),
-        ('CE', 'The contract has a compilation error'),
-        ('US', 'The contract has a gas limit error'),
+        ('CE', 'This call will revert'),
+        ('US', 'The gas limit will be reached'),
     )
     DIFFICULTY_CHOICES = (
         (0, 'Not set'),
