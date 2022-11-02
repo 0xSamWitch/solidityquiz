@@ -13,10 +13,9 @@ def generate_preview_key():
 
 class Question(models.Model):
     RESULT_CHOICES = (
-        ('OK', 'The program is guaranteed to output:'),
-        ('CE', 'The program has a compilation error'),
-        ('US', 'The program is unspecified / implementation defined'),
-        ('UD', 'The program is undefined'),
+        ('OK', 'The expected result is:'),
+        ('CE', 'The contract has a compilation error'),
+        ('US', 'The contract has a gas limit error'),
     )
     DIFFICULTY_CHOICES = (
         (0, 'Not set'),

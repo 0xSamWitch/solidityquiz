@@ -5,7 +5,6 @@
 <ul>
 <li>Your question should <strong>be short</strong>, and <strong>demonstrate one thing only</strong></li>
 <li>Your question should <strong>compile</strong> (unless not compiling is the point)</li>
-<li>Your question should <strong>be about standard C++</strong>, not compiler specific or about 3rd party libraries</li>
 <li>Your question should <strong>not be a trick question</strong>, and <strong>be free from distractions</strong></li>
 <li>Your explanation should <strong>be clear and to the point</strong></li>
 <li>Your explanation should <strong>use correct terminology</strong>, and <strong>refer to the standard</strong> where possible</li>
@@ -15,7 +14,7 @@
 <hr>
 <form action="" method="post" class="create_question">{% csrf_token %}
     {{ form.non_field_errors }}
-        <p><label for="id_question">Quiz source code: <span class="help_text">Only put C++ source code here. "What is the output of this program" will be added to the top automatically.</span></label></p>
+        <p><label for="id_question">Quiz source code: <span class="help_text">Add a comment at the top with the question, e.g "// How many storage slots should this struct have?" followed by only solidity code</span></label></p>
         <div id="question_errors">{{ form.question.errors }}</div>
         <p>{{ form.question }}</p>
 

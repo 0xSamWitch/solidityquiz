@@ -180,6 +180,6 @@ SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 TOP_WARNING=''
 
-CPP_STD='C++17'
+SOLIDITY_VERSION='Solidity 0.8.17'
 
 from . import local_settings

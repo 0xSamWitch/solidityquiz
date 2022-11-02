@@ -1,7 +1,7 @@
  <!doctype html>
 <html lang="en">
 <head>
-<title>CppQuiz.org {{title}}</title>
+<title>SolidityQuiz.com {{title}}</title>
 <script src="{{STATIC_URL}}highlight.pack.js"></script>
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -62,7 +62,7 @@ window.cookieconsent.initialise({
   },
   "theme": "edgeless",
   "content": {
-    "href": "https://cppquiz.org/quiz/about#cookies"
+    "href": "https://solidityquiz.com/quiz/about#cookies"
   }
 })});
 </script>
@@ -70,9 +70,9 @@ window.cookieconsent.initialise({
 </head>
 <body onload="hljs.initHighlightingOnLoad();">
 <div id="content">
-{%if request.get_host == "beta.cppquiz.org"%}
+{%if request.get_host == "beta.solidityquiz.com"%}
 <p class="beta_warning">
-<strong>NOTE:</strong> This is the development site. Unless you are here specifically to test a certain feature, you probably want to visit <a href="https://cppquiz.org">the official site</a> instead.
+<strong>NOTE:</strong> This is the development site. Unless you are here specifically to test a certain feature, you probably want to visit <a href="https://solidityquiz.com">the official site</a> instead.
 </p>
 {%endif%}
 {%if TOP_WARNING|safe %}
@@ -81,7 +81,7 @@ window.cookieconsent.initialise({
 </div>
 {% endif %}
 <div id="header">
-<h1><a href="/">C++ Quiz</a></h1>
+<h1><a href="/">Solidity Quiz</a></h1>
 </div>
 {%block content%}
 {%endblock%}
@@ -92,13 +92,13 @@ window.cookieconsent.initialise({
 {%endif%}
 <a href="/quiz/about/">About</a> |
 <a href="/quiz/about">Help/FAQ</a> |
-<a href="https://github.com/knatten/cppquiz/issues">Report issues</a> |
-<a href="https://github.com/knatten/cppquiz/blob/master/CODE_OF_CONDUCT.md">CoC</a> |
-<a href="https://twitter.com/intent/follow?screen_name=CppQuiz" class="twitter-follow"><img src="{{STATIC_URL}}/twitter.png" height="9" alt="Twitter"> Follow @CppQuiz</a> |
-© <a href="http://knatten.org">Anders Schau Knatten</a> {% now "Y"%}.
+<a href="https://github.com/0xSamwitch/solidityquiz/issues">Report issues</a> |
+<a href="https://github.com/0xSamwitch/solidityquiz/blob/master/CODE_OF_CONDUCT.md">CoC</a> |
+<a href="https://twitter.com/intent/follow?screen_name=SamwitchPS" class="twitter-follow"><img src="{{STATIC_URL}}/twitter.png" height="9" alt="Twitter"> Follow @samwitch</a> |
+© SamWitch {% now "Y"%}.
 </p>
 <p>
-Thanks to <a href="http://www.pvv.org/~oma/cv.html">Olve Maudal</a>, several people in the <a href="http://accu.org/">ACCU</a> and all other contributers for valuable input!
+Thanks to <a href="http://www.pvv.org/~oma/cv.html">DoubleSharp</a> and all other contributers for valuable input!
 </p>
 <p>
  Contents licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
