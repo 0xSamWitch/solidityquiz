@@ -49,7 +49,7 @@ hr.clear {
   border: 0;
 }
 #header {
-  background-color: #80bcff;
+  background-color: #dfbaff;
   padding: 0.5em;
 }
 #header h1 {
@@ -64,7 +64,7 @@ h1 a {
 }
 #giveup,
 #preview {
-  background-color: #faa;
+  background-color: #ff6700;
 }
 pre {
   white-space: pre-wrap;
@@ -73,16 +73,16 @@ code {
   background: rgba(255, 255, 255, 0.2);
 }
 #correct {
-  background-color: #cfc;
+  background-color: #060;
 }
 #correct code {
   font-family: 'Courier New', Courier, monospace;
 }
 #incorrect {
-  background-color: #fcc;
+  background-color: #f71c1c;
 }
 #hint {
-  background-color: #ffa;
+  background-color: #767600;
 }
 #correct,
 #incorrect,
