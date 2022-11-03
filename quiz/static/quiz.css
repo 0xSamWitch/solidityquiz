@@ -21,7 +21,9 @@ a:active {
 }
 
 #content {
-  width: 55em;
+  min-width: 55em;
+  max-width: 75em;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   padding: 0;
@@ -32,8 +34,11 @@ a:active {
   border: 0;
   margin: 0 1em 0 0;
   float: left;
-  width: 42em;
+  min-width: 42em;
+  max-width: 55em;
+  width: 75%;
 }
+
 #right_col {
   padding: 0 0.5em 0 0.5em;
   border: 0;
@@ -49,7 +54,7 @@ hr.clear {
   border: 0;
 }
 #header {
-  background-color: #dfbaff;
+  background-color: #28ffa7a3;
   padding: 0.5em;
 }
 #header h1 {
