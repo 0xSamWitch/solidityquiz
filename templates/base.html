@@ -1,126 +1,158 @@
- <!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-<title>SolidityQuiz.com {{title}}</title>
-<script src="{{STATIC_URL}}highlight.pack.js"></script>
-<script src="{{STATIC_URL}}solidity.min.js"></script>
-<script src="{{STATIC_URL}}yul.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-<link type="text/css" rel="stylesheet" href="{{STATIC_URL}}themes/monokai.css" />
-<link type="text/css" rel="stylesheet" href="{{STATIC_URL}}quiz.css?v=5">
-<link rel="shortcut icon" href="{{STATIC_URL}}favicon.png">
-<script>
-$(document).ready(function() {
+  <head>
+    <title>SolidityQuiz.com {{title}}</title>
+    <script src="{{STATIC_URL}}highlight.pack.js"></script>
+    <script src="{{STATIC_URL}}solidity.min.js"></script>
+    <script src="{{STATIC_URL}}yul.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="{{STATIC_URL}}themes/monokai.css"
+    />
+    <link type="text/css" rel="stylesheet" href="{{STATIC_URL}}quiz.css?v=5" />
+    <link rel="shortcut icon" href="{{STATIC_URL}}favicon.png" />
+    <script>
+      $(document).ready(function () {
+        hljs.initHighlightingOnLoad();
 
-    hljs.initHighlightingOnLoad();
+        $('select#result').change(function () {
+          option = $(this).val();
+          if (option === 'OK') {
+            $('span#output_form_part').show('fast');
+          } else {
+            $('span#output_form_part').hide('fast');
+          }
+        });
+        $('.confirm_hint').click(function () {
+          return confirm(
+            'Are you sure you want to view the hint? Have you really thought through the question?'
+          );
+        });
+        $('.dismiss_link').click(function () {
+          $.ajax('/quiz/dismiss_training_msg');
+          $(this).parent().hide(300);
+        });
+        $('.previous_explanation').hide();
+        $('.show_previous_explanation').click(function () {
+          explanation = $('.previous_explanation');
+          explanation.toggle();
+          if (explanation.is(':visible')) {
+            $('.show_previous_explanation').text(function () {
+              return $(this).text().replace('Show', 'Hide');
+            });
+          } else {
+            $('.show_previous_explanation').text(function () {
+              return $(this).text().replace('Hide', 'Show');
+            });
+          }
+        });
+        $('p.disabled a').click(function (e) {
+          e.preventDefault();
+        });
+      });
+    </script>
 
-    $("select#result").change(function() {
-        option = $(this).val();
-        if (option === 'OK')
-        {
-            $("span#output_form_part").show('fast');
-        } else {
-            $("span#output_form_part").hide('fast');
-        }
-    })
-    $('.confirm_hint').click(function(){
-        return confirm("Are you sure you want to view the hint? Have you really thought through the question?");
-    })
-    $('.dismiss_link').click(function(){
-        $.ajax('/quiz/dismiss_training_msg');
-        $(this).parent().hide(300);
-    });
-    $('.previous_explanation').hide();
-    $('.show_previous_explanation').click(function(){
-        explanation = $('.previous_explanation');
-        explanation.toggle();
-        if (explanation.is(":visible")) {
-            $('.show_previous_explanation').text(function () {return $(this).text().replace("Show", "Hide"); });
-        } else {
-            $('.show_previous_explanation').text(function () {return $(this).text().replace("Hide", "Show"); });
-        }
-    });
-    $('p.disabled a').click(function(e) {
-        e.preventDefault();
-    });
-});
-</script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css"
+    />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+    <script>
+      window.addEventListener('load', function () {
+        window.cookieconsent.initialise({
+          palette: {
+            popup: {
+              background: '#ccccff',
+              text: '#000000',
+            },
+            button: {
+              background: '#aaaaff',
+              text: '#000000',
+            },
+          },
+          theme: 'edgeless',
+          content: {
+            href: 'https://solidityquiz.com/quiz/about#cookies',
+          },
+        });
+      });
+    </script>
+  </head>
+  <body onload="hljs.initHighlightingOnLoad();">
+    <div id="content">
+      {%if request.get_host == "beta.solidityquiz.com"%}
+      <p class="beta_warning">
+        <strong>NOTE:</strong> This is the development site. Unless you are here
+        specifically to test a certain feature, you probably want to visit
+        <a href="https://solidityquiz.com">the official site</a> instead.
+      </p>
+      {%endif%} {%if TOP_WARNING|safe %}
+      <div id="top_warning">{{TOP_WARNING|safe}}</div>
+      {% endif %}
+      <div id="header">
+        <h1><a href="/">Solidity Quiz</a></h1>
+      </div>
+      {%block content%} {%endblock%}
+      <div id="footer">
+        <p>
+          {%if user.is_staff%}
+          <a href="/admin/">Admin</a> | {%endif%}
+          <a href="/quiz/about/">About</a> |
+          <a href="/quiz/about">Help/FAQ</a> |
+          <a href="https://github.com/0xSamwitch/solidityquiz/issues"
+            >Report issues</a
+          >
+          |
+          <a
+            href="https://github.com/0xSamwitch/solidityquiz/blob/master/CODE_OF_CONDUCT.md"
+            >CoC</a
+          >
+          |
+          <a
+            href="https://twitter.com/intent/follow?screen_name=SamwitchPS"
+            class="twitter-follow"
+            ><img src="{{STATIC_URL}}/twitter.png" height="9" alt="Twitter" />
+            Follow @samwitch</a
+          >
+          |
+          <a
+            href="https://twitter.com/intent/follow?screen_name=0xDoublesharp"
+            class="twitter-follow"
+            ><img src="{{STATIC_URL}}/twitter.png" height="9" alt="Twitter" />
+            Follow @0xDoublesharp</a
+          >
+          | &copy; {% now "Y"%}.
+        </p>
+        <p>Thanks to all contributers for their valuable input!</p>
+        <p>
+          Contents licensed under a
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"
+            >Creative Commons Attribution-ShareAlike 4.0 International
+            License</a
+          >.
+        </p>
+      </div>
+    </div>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-40159458-1']);
+      _gaq.push(['_trackPageview']);
 
-<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
-<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
-<script>
-window.addEventListener("load", function(){
-window.cookieconsent.initialise({
-  "palette": {
-    "popup": {
-      "background": "#ccccff",
-      "text": "#000000"
-    },
-    "button": {
-      "background": "#aaaaff",
-      "text": "#000000"
-    }
-  },
-  "theme": "edgeless",
-  "content": {
-    "href": "https://solidityquiz.com/quiz/about#cookies"
-  }
-})});
-</script>
-
-</head>
-<body onload="hljs.initHighlightingOnLoad();">
-<div id="content">
-{%if request.get_host == "beta.solidityquiz.com"%}
-<p class="beta_warning">
-<strong>NOTE:</strong> This is the development site. Unless you are here specifically to test a certain feature, you probably want to visit <a href="https://solidityquiz.com">the official site</a> instead.
-</p>
-{%endif%}
-{%if TOP_WARNING|safe %}
-<div id="top_warning">
-{{TOP_WARNING|safe}}
-</div>
-{% endif %}
-<div id="header">
-<h1><a href="/">Solidity Quiz</a></h1>
-</div>
-{%block content%}
-{%endblock%}
-<div id="footer">
-<p>
-{%if user.is_staff%}
-<a href="/admin/">Admin</a> |
-{%endif%}
-<a href="/quiz/about/">About</a> |
-<a href="/quiz/about">Help/FAQ</a> |
-<a href="https://github.com/0xSamwitch/solidityquiz/issues">Report issues</a> |
-<a href="https://github.com/0xSamwitch/solidityquiz/blob/master/CODE_OF_CONDUCT.md">CoC</a> |
-<a href="https://twitter.com/intent/follow?screen_name=SamwitchPS" class="twitter-follow"><img src="{{STATIC_URL}}/twitter.png" height="9" alt="Twitter"> Follow @samwitch</a> |
-<a href="https://twitter.com/intent/follow?screen_name=0xDoublesharp" class="twitter-follow"><img src="{{STATIC_URL}}/twitter.png" height="9" alt="Twitter"> Follow @0xDoublesharp</a> |
-&copy; {% now "Y"%}.
-</p>
-<p>
-Thanks to all contributers for their valuable input!
-</p>
-<p>
- Contents licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
-</p>
-</div>
-</div>
-<script>
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-40159458-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</body>
+      (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src =
+          ('https:' == document.location.protocol
+            ? 'https://ssl'
+            : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
 </html>
-
