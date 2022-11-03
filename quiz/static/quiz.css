@@ -3,6 +3,23 @@ body {
   color: #eee;
   background: #333;
 }
+/* unvisited link */
+a:link {
+  color: rgb(0, 115, 215);
+}
+/* visited link */
+a:visited {
+  color: rgb(0, 63, 118);
+}
+/* mouse over link */
+a:hover {
+  color: rgb(1, 125, 234);
+}
+/* selected link */
+a:active {
+  color: rgb(1, 125, 234);
+}
+
 #content {
   width: 55em;
   margin-left: auto;
