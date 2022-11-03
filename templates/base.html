@@ -82,6 +82,20 @@
       });
     </script>
   </head>
+  <!-- Google tag (gtag.js) -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-2Q87MLJ5P1"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-2Q87MLJ5P1');
+  </script>
   <body onload="hljs.initHighlightingOnLoad();">
     <div id="content">
       {%if request.get_host == "beta.solidityquiz.com"%}
@@ -137,19 +151,5 @@
         </p>
       </div>
     </div>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-2Q87MLJ5P1"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-
-      gtag('config', 'G-2Q87MLJ5P1');
-    </script>
   </body>
 </html>
