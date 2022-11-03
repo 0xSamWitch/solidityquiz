@@ -1,10 +1,10 @@
 Answer:
 <select name="result" id="result">
-{%for o in question.RESULT_CHOICES%}
-<option value="{{o.0}}">{{o.1}}</option>
-{%endfor%}
+  {%for o in question.RESULT_CHOICES%}
+  <option value="{{o.0}}">{{o.1}}</option>
+  {%endfor%}
 </select>
 <span id="output_form_part">
-<input name="answer" size="4" autocomplete="off">
+  <input name="answer" size="12" autocomplete="off" />
 </span>
-<input type="submit" value="Answer" name="did_answer">
+<input type="submit" value="Answer" name="did_answer" />
