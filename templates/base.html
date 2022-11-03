@@ -2,6 +2,12 @@
 <html lang="en">
   <head>
     <title>SolidityQuiz.com {{title}}</title>
+    <meta property="og:title" content="SolidityQuiz.com {{title}}" />
+    <meta property="og:description" content="{{question.question|escape}}" />
+    <meta property="og:image" content="{{STATIC_URL}}/code.jpg" />
+    <meta property="og:type" content="website" />
+
+    <!-- scripts -->
     <script src="{{STATIC_URL}}highlight.pack.js"></script>
     <script src="{{STATIC_URL}}solidity.min.js"></script>
     <script src="{{STATIC_URL}}yul.min.js"></script>
