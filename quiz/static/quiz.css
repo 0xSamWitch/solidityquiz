@@ -5,19 +5,19 @@ body {
 }
 /* unvisited link */
 a:link {
-  color: rgb(0, 115, 215);
+  color: rgb(61 135 200);
 }
 /* visited link */
 a:visited {
-  color: rgb(0, 63, 118);
+  color: rgb(50, 107, 156);
 }
 /* mouse over link */
 a:hover {
-  color: rgb(1, 125, 234);
+  color: rgb(80, 161, 233);
 }
 /* selected link */
 a:active {
-  color: rgb(1, 125, 234);
+  color: rgb(80, 161, 233);
 }
 
 #content {
@@ -119,7 +119,7 @@ h4.quiz_mode {
   margin-bottom: 0.2em;
 }
 #right_col h4 {
-  color: #44a;
+  color: #7676e4;
 }
 .create_question textarea {
   width: 100%;
